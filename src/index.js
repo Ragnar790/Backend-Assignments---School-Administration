@@ -56,16 +56,18 @@ app.put("/api/student/:stdId", (req, res) => {
 	//finding the obj
 	const objToUpdate = initData.find((x) => x.id == req.params.stdId);
 	if (
-		req.body.name &&
-		req.body.division &&
-		req.body.currentClass &&
+		(req.body.name || req.body.division || req.body.currentClass) &&
 		//checking if req obj is present
 		initData.some((x) => x.id == req.params.stdId)
 	) {
 		//updating
-		objToUpdate.name = req.body.name;
-		objToUpdate.currentClass = req.body.currentClass;
-		objToUpdate.division = req.body.division;
+		objToUpdate.name = req.body.name ? req.body.name : objToUpdate.name;
+		objToUpdate.currentClass = req.body.currentClass
+			? req.body.currentClass
+			: objToUpdate.currentClass;
+		objToUpdate.division = req.body.division
+			? req.body.division
+			: objToUpdate.division;
 		res.end();
 		console.log("updated");
 	} else {
