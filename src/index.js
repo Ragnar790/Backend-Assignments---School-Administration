@@ -60,7 +60,7 @@ app.put("/api/student/:stdId", (req, res) => {
 		//checking if req obj is present
 		initData.some((x) => x.id == req.params.stdId)
 	) {
-		//updating
+		//UPDATING (IF IN REQ BODY KEY IS PRESENT, CHANGE. ELSE KEEP IT SAME)
 		objToUpdate.name = req.body.name ? req.body.name : objToUpdate.name;
 		objToUpdate.currentClass = req.body.currentClass
 			? req.body.currentClass
