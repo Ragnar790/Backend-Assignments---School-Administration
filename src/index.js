@@ -63,7 +63,7 @@ app.put("/api/student/:stdId", (req, res) => {
 		//UPDATING (IF IN REQ BODY KEY IS PRESENT, CHANGE. ELSE KEEP IT SAME)
 		objToUpdate.name = req.body.name ? req.body.name : objToUpdate.name;
 		objToUpdate.currentClass = req.body.currentClass
-			? req.body.currentClass
+			? Number(req.body.currentClass)
 			: objToUpdate.currentClass;
 		objToUpdate.division = req.body.division
 			? req.body.division
