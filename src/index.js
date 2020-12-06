@@ -39,7 +39,7 @@ app.post("/api/student", (req, res) => {
 		initData.push({
 			id: new_id,
 			name: req.body.name,
-			currentClass: req.body.currentClass,
+			currentClass: Number(req.body.currentClass),
 			division: req.body.division,
 		});
 
@@ -80,6 +80,7 @@ app.delete("/api/student/:stdId", (req, res) => {
 	if (initData.some((x) => x.id == req.params.stdId)) {
 		const datatIndex = initData.findIndex((x) => x.id == req.params.stdId);
 		delete initData[datatIndex];
+		// initData[datatIndex] = { id: req.params.id };
 		res.end();
 		console.log("deleted");
 	} else {
